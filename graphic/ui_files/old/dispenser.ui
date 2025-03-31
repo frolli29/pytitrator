@@ -223,7 +223,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>500</number>
+    <number>400</number>
    </property>
   </widget>
   <widget class="QPushButton" name="dispense_button_B">
@@ -288,7 +288,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>500</number>
+    <number>400</number>
    </property>
   </widget>
   <widget class="QPushButton" name="dispense_button_A">
@@ -314,7 +314,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>500</number>
+    <number>400</number>
    </property>
   </widget>
   <widget class="QPushButton" name="make_ref_C">
@@ -418,7 +418,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>500</number>
+    <number>400</number>
    </property>
   </widget>
   <widget class="QPushButton" name="full_reload_button_A">
@@ -457,7 +457,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>500</number>
+    <number>400</number>
    </property>
   </widget>
   <widget class="QPushButton" name="make_ref_A">
@@ -483,7 +483,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>500</number>
+    <number>400</number>
    </property>
   </widget>
   <widget class="QSpinBox" name="load_box_C">

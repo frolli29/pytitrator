@@ -284,7 +284,7 @@
     <bool>false</bool>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>2</number>
    </property>
    <property name="minimum">
     <double>0.000000000000000</double>
@@ -302,14 +302,14 @@
   <widget class="QLabel" name="Vinit_label">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>430</x>
      <y>190</y>
      <width>261</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Initial Volume (mL)</string>
+    <string>initial volume (mL)</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
