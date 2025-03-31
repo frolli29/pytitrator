@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
-    <height>363</height>
+    <width>440</width>
+    <height>290</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>310</y>
+     <x>190</x>
+     <y>220</y>
      <width>231</width>
-     <height>41</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="orientation">
@@ -32,8 +32,8 @@
   <widget class="QLCDNumber" name="lcdNumber">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>170</y>
+     <x>210</x>
+     <y>80</y>
      <width>211</width>
      <height>131</height>
     </rect>
@@ -42,54 +42,51 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>130</y>
+     <x>260</x>
+     <y>40</y>
      <width>131</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Live voltage (mV)</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <string>tension (mV) en direct</string>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="U_ph4">
+  <widget class="QLCDNumber" name="lcdNumber_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>120</y>
+     <x>30</x>
+     <y>50</y>
      <width>71</width>
      <height>51</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="U_ph7">
+  <widget class="QLCDNumber" name="lcdNumber_3">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>200</y>
+     <x>30</x>
+     <y>130</y>
      <width>71</width>
      <height>51</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="U_ph10">
+  <widget class="QLCDNumber" name="lcdNumber_4">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>280</y>
+     <x>30</x>
+     <y>210</y>
      <width>71</width>
      <height>51</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="button_ph10">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>280</y>
+     <x>130</x>
+     <y>210</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -98,11 +95,11 @@
     <string>pH10</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="button_ph7">
+  <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>200</y>
+     <x>130</x>
+     <y>130</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -111,11 +108,11 @@
     <string>pH7</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="button_ph4">
+  <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>120</y>
+     <x>130</x>
+     <y>50</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -127,36 +124,14 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>80</y>
+     <x>30</x>
+     <y>10</y>
      <width>151</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Recorded voltages</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_indications">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>501</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Click on corresponding pH when voltage stabilizes
-Click Apply to save</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <string>Tensions enregistrées</string>
    </property>
   </widget>
  </widget>

@@ -119,10 +119,7 @@ class Data():
                                 ### METADATA
 
         #Sequence general and chemical informations
-        metadata = ("Instrument : "+seq.ihm.instrument_id+"\nMain board S/N : "\
-        +str(seq.ihm.board_number)+"\nVINT S/N : "+str(seq.ihm.VINT_number)+seq.infos\
-        +"\n\nInstruction table :\nSyringe\tDipense type\tValue\tdelay mixing\tdelay flow\tspeed\treference\n")
-        
+        metadata = seq.infos+"\n\nInstruction table :\n"
         #Sequence configuration file printed here
         tab = seq.instruction_table
         Nl = len(tab)
@@ -137,18 +134,18 @@ class Data():
         #background and reference spectra
         if seq.spectro.state=='open':   
             #N° measure where reference is taken
-            metadata += "reference taken after measure N°\t"
+            metadata += "reference taken during measure N°\t"
             if seq.initial_reference==True and seq.initial_background==True:
                 metadata += "Initial\t\t"
             for c in range(seq.N_ref):
                 metadata += str(seq.reference_indexes[c])+"\t\t"
             
             N_refs=len(seq.references)  #real number of references taken
-            #print("n refs ", N_refs)
+            print("n refs ", N_refs)
             #Times of reference measures
             metadata += "\ntimes (h:min:sec)\t"
             for c in range(N_refs):
-                #print(c)
+                print(c)
                 metadata += str(seq.reference_times[c])+"\t\t"
             #Labels bgd or ref
             metadata += "\nWavelengths(nm)\t"
@@ -219,7 +216,7 @@ class Data():
         data+="\ntimes (h:min:sec)\t"   #heures de mesures
         for k in range(len(seq.measure_times)):
             data+=str(seq.measure_times[k].strftime("%H:%M:%S"))+'\t'   
-        data+="\nequilibration delay (h:min:sec)\t"   #temps entre mesures
+        data+="\nequilibration delay (min:sec)\t"   #temps entre mesures
         for k in range(len(seq.equilibration_times)):
             data+=str(seq.equilibration_times[k].seconds//60)+":"+str(seq.equilibration_times[k].seconds%60)+'\t' 
 

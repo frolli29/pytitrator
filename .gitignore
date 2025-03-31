@@ -17,13 +17,14 @@
 
 #compiled python files
 
-__pycache__/
+__pycache__/*
 *.py[cod]
 *.cpython-313.pyc
+__pycache__/*.cpython-313.pyc
 *.pyc
 
 windows/__pycache__/
 subsystems/__pycache__/
 graphic/__pycache__/
-graphic/windows/__pycache__/
+/graphic/windows/__pycache__/
 subsystems/windows/__pycache__/
