@@ -131,13 +131,11 @@ class Ui_calibration_window(object):
     def retranslateUi(self, calibration_window):
         _translate = QtCore.QCoreApplication.translate
         calibration_window.setWindowTitle(_translate("calibration_window", "pH meter calibration"))
-        self.label.setText(_translate("calibration_window", "Live voltage (mV)"))
-        self.button_ph10.setText(_translate("calibration_window", "pH10"))
-        self.button_ph7.setText(_translate("calibration_window", "pH7"))
-        self.button_ph4.setText(_translate("calibration_window", "pH4"))
-        self.label_2.setText(_translate("calibration_window", "Recorded voltages"))
-        self.label_indications.setText(_translate("calibration_window", "Click on corresponding pH when voltage stabilizes\n"
-"Click Apply to save"))
+        self.label.setText(_translate("calibration_window", "tension (mV) en direct"))
+        self.pushButton.setText(_translate("calibration_window", "pH10"))
+        self.pushButton_2.setText(_translate("calibration_window", "pH7"))
+        self.pushButton_3.setText(_translate("calibration_window", "pH4"))
+        self.label_2.setText(_translate("calibration_window", "Tensions enregistrées"))
 
 
 if __name__ == "__main__":

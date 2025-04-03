@@ -12,6 +12,7 @@ import os
 
 class PhMeterCalibWindow(QDialog, Ui_calibration_window):
     def __init__(self, ihm, parent=None):
+        self.ihm=ihm
         super(PhMeterCalibWindow,self).__init__(parent)
         self.setupUi(self)
         self.ihm=ihm
@@ -45,25 +46,24 @@ class PhMeterCalibWindow(QDialog, Ui_calibration_window):
             self.reject()
 
     def setOnDirectVoltage(self): #, ch, voltage):
-        self.lcdNumber.display(1000*self.ihm.phmeter.currentVoltage)
+        self.direct_voltage_mV.display(1000*self.ihm.phmeter.currentVoltage)
 
     def saveAndShowVoltage(self, screen): #sreen est un objet QLCDNumber
         U=self.ihm.phmeter.currentVoltage
         print("save voltage")
-        if screen==self.U_ph4:
+        if screen==self.lcdNumber_pH4:
             self.U4=U
             self.used_pH_buffers.add(4)
-        if screen==self.U_ph7:
+        if screen==self.lcdNumber_pH7:
             self.U7=U
             self.used_pH_buffers.add(7)
-        if screen==self.U_ph10:
+        if screen==self.lcdNumber_pH10:
             self.U10=U
             self.used_pH_buffers.add(10)
         print("voltage=",U)
         screen.display(U)
 
     def validateCal(self): #pH_buffers est un tuple contenant les valeurs de pH des tampons
-        print("validate cal")
         pH_buffers=sorted(list(self.used_pH_buffers))
         self.used_pH_buffers = pH_buffers
         #print("pH buffers : ",type(pH_buffers),pH_buffers)
@@ -82,4 +82,3 @@ class PhMeterCalibWindow(QDialog, Ui_calibration_window):
             print("This type of calibration is not suppported")
         (a,b)=PHMeter.computeCalCoefs(self.ihm.phmeter,u_cal,pH_buffers) #calcul des coefficients de calib
         PHMeter.saveCalData(self.ihm.phmeter, dt.strftime("%m/%d/%Y %H:%M:%S"), pH_buffers, u_cal, (a,b)) #enregistrer dans le fichier
-

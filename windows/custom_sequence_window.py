@@ -162,6 +162,7 @@ class CustomSequenceWindow(QMainWindow,Ui_CustomSequenceWindow):
                 self.remaining_time_sec-=1
                 #print("remaining time : ", self.remaining_time_sec)
                 self.countdown.setProperty("value", self.remaining_time_sec)
+
         try:
             tm=datetime.now()
             tm=tm.replace(microsecond=0)

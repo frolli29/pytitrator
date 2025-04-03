@@ -53,6 +53,7 @@ class IHM:
     spectro_unit=AbsorbanceMeasure()
     phmeter=PHMeter()
     dispenser=Dispenser()
+    #phidgetstepperpump=PhidgetStepperPump() # Modif LS
     peristaltic_pump=PeristalticPump()
     circuit=Circuit(peristaltic_pump)
 
@@ -97,9 +98,19 @@ class IHM:
         self.manager.setOnAttachHandler(self.AttachHandler)
         self.manager.setOnDetachHandler(self.DetachHandler)
         self.manager.open()
-        self.board_number=0
-        self.VINT_number=0
-        self.instrument_id=str(0)
+
+        # Ajout d'une variable pour suivre les alertes des switchs - modif vLS
+        self.switch_alerts = {} # modif vLS
+        
+        # Définition des switchs - modif vLS
+        self.switch_names = { # modif vLS
+        self.dispenser.syringe_A.ch_full: "Full A", # modif vLS
+        self.dispenser.syringe_A.ch_empty: "Empty A", # modif vLS
+        self.dispenser.syringe_B.ch_full: "Full B", # modif vLS
+        self.dispenser.syringe_B.ch_empty: "Empty B", # modif vLS
+        self.dispenser.syringe_C.ch_full: "Full C", # modif vLS
+        self.dispenser.syringe_C.ch_empty: "Empty C" # modif vLS
+        } # modif vLS
 
         # Ajout d'une variable pour suivre les alertes des switchs - modif vLS
         self.switch_alerts = {} # modif vLS
@@ -263,7 +274,7 @@ class IHM:
         if self.phmeter.state=='open':
             parser.set('phmeter', 'epsilon', str(self.phmeter.stab_step))
             parser.set('phmeter', 'delta', str(self.phmeter.stab_time))
-            #parser.set('calibration', 'file', str(self.phmeter.relative_calib_path))
+            parser.set('calibration', 'file', str(self.phmeter.relative_calib_path))
             parser.set('phmeter', 'default', str(self.phmeter.model))
             parser.set('electrode', 'default', str(self.phmeter.electrode))
         if self.dispenser.state=='open':
@@ -280,9 +291,7 @@ class IHM:
         date_text=dt.strftime("%m/%d/%Y %H:%M:%S")
         date_time=dt.strftime("%m-%d-%Y_%Hh%Mmin%Ss")
         name = "mes_"
-        header = ("Instant measure on Dommino titrator\n"+"date and time : "+str(date_text)\
-            +"\n"+"Device : "+self.instrument_id+"\nMain board S/N : "+str(self.board_number)\
-            +"\nVINT S/N : "+str(self.VINT_number)+"\n\n")
+        header = "Instant measure on Dommino titrator\n"+"date and time : "+str(date_text)+"\n"+"Device : "+self.instrument_id+"\n\n"
         data = ""
         print("saving instant measure - ")
         #saving pH measure
@@ -380,7 +389,7 @@ class IHM:
     def openSettingsWindow(self):
         self.settings_win = SettingsWindow(self)
         self.settings_win.show()
-        for button in self.settings_win.dialogbox.buttons():   #Disconnexion of Keyboard Enter event
+        for button in self.seqConfig.dialogbox.buttons():   #Disconnexion of Keyboard Enter event
             button.setAutoDefault(False)  
             button.setDefault(False)  
 
