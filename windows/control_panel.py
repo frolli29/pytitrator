@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication #, QWidget, QLabel, QLineE
 from graphic.windows.control_panel_win import Ui_ControlPanel
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QRect, QPoint
-#from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QIcon
 from graphic import display
 
 from pyqtgraph import PlotWidget, plot
@@ -37,6 +37,10 @@ class ControlPanel(QMainWindow, Ui_ControlPanel):
     def __init__(self, ihm, parent=None):
         super(ControlPanel,self).__init__(parent)
         self.setupUi(self)
+        
+        # Icone windows
+        icon_path = os.path.join(os.path.dirname(__file__), "..", "graphic", "images", "icon-appli.ico")
+        self.setWindowIcon(QIcon(icon_path))
 
         #Sous systèmes
         self.ihm=ihm
@@ -230,6 +234,25 @@ class ControlPanel(QMainWindow, Ui_ControlPanel):
             self.stab_step.valueChanged.connect(self.update_stab_step)
             #self.load_calibration_button.clicked.connect(self.load_calibration)
     
+    def connect_disconnect_phmeter(self):
+        """Executed when clicking on connect/disconnect button"""
+        if self.phmeter.state=='closed':
+            self.phmeter.connect()
+            self.link_pHmeter2IHM()
+        elif self.phmeter.state=='open':
+            self.phmeter.close()
+            self.clear_phmeter_display()
+        self.update_phmeter_state()
+
+    def update_phmeter_state(self):
+        """Updates light indicator and Connexion button on dispenser"""
+        if self.phmeter.state=='closed':
+            self.led_phmeter.setPixmap(self.pixmap_red)
+            self.connect_phmeter_button.setText("Connect")
+        elif self.phmeter.state=='open':
+            self.led_phmeter.setPixmap(self.pixmap_green)
+            self.connect_phmeter_button.setText("Disconnect")
+
     def update_electrode_model(self):
         self.phmeter.electrode=self.electrode_box.toPlainText()
 

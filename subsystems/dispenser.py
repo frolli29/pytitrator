@@ -508,7 +508,8 @@ class PhidgetStepperPump(SyringePump): #remplace l'ancienne classe SyringePump
         level_400 = self.level_uL-100
         q=int(vol//capacity)
         r=vol%capacity
-        print(q,"x",self.size,"+",r,"uL")
+        print(q,"x",capacity,"+",r,"uL")
+
         if vol<=level_400: #cas classique de simple dispense
             self.simple_dispense(vol)
         else:   #vol>level_400 #dispense with multiple stages

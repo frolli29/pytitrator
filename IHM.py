@@ -112,6 +112,19 @@ class IHM:
         self.dispenser.syringe_C.ch_empty: "Empty C" # modif vLS
         } # modif vLS
 
+        # Ajout d'une variable pour suivre les alertes des switchs - modif vLS
+        self.switch_alerts = {} # modif vLS
+        
+        # Définition des switchs - modif vLS
+        self.switch_names = { # modif vLS
+        self.dispenser.syringe_A.ch_full: "Full A", # modif vLS
+        self.dispenser.syringe_A.ch_empty: "Empty A", # modif vLS
+        self.dispenser.syringe_B.ch_full: "Full B", # modif vLS
+        self.dispenser.syringe_B.ch_empty: "Empty B", # modif vLS
+        self.dispenser.syringe_C.ch_full: "Full C", # modif vLS
+        self.dispenser.syringe_C.ch_empty: "Empty C" # modif vLS
+        } # modif vLS
+
     def AttachHandler(self, man, channel):
         """S'execute lors du branchement des cartes Phidget
         Les trois arguments de cette fonction ne peuvent pas être enlevés"""
@@ -340,6 +353,7 @@ class IHM:
 
         name+=str(date_time)
         output=header+"\n\n"+data
+        
         f_out = open(self.saving_folder+'/'+name+'.txt','w') #création d'un fichier dans le répertoire
         f_out.write(output)
         f_out.close()    
